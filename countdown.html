@@ -44,6 +44,7 @@ button{border-radius:5px;
 <script>
 var timerid;
 function startTimer() {
+    clearInterval(timerid);
     var days=document.getElementById("days").value;
     var hr=document.getElementById("hr").value;
     var min=document.getElementById("min").value;
