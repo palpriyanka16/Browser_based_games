@@ -11,18 +11,22 @@ input[type=number] {
     -webkit-transition: 0.5s;
     transition: 0.5s;
     outline: none;
+    margin-left:30em;
 }
-
+label{margin-left:25em;}
 input[type=number]:focus {
     border: 3px solid #555;
 }
 button{border-radius:5px;
-        background-color: green;
-        color:white;
+        background-color: #FF9900;
+        color:black;
         cursor:pointer;
         height:50px;
         width:70px;
-        padding:10px;}
+        padding:10px;
+        margin-left:20em;
+        margin-top:4em;}
+body{background-color: #FFCC33;}
 
 </style>
 </head>
@@ -37,13 +41,17 @@ button{border-radius:5px;
 <label for="seconds">ENTER TIME IN SECONDS</label><br>
 <input id="sec" type="number" name="countdown"><br>
 </form>
+
 <button id="submit" onclick="startTimer()">START</button>
 <button id="stop" onclick="stop()">STOP</button>
 <button id="reset" onclick="reset()">RESET</button>
-<div style="margin-top:80px;margin-left:80px;"><span id="time"></span></div>
+<p id="message" style="margin-top:3em;margin-left:30em;font-size:18px;font-family:Georgia;color:#663300;"></p>
+<div style="margin-top:80px;margin-left:34em;"><span id="time" style="font-size:20px;background-color:#FF9900;"></span></div>
 <script>
 var timerid;
 function startTimer() {
+    document.getElementById("message").innerHTML="COUNTDOWN HAS BEGUN";
+    
     clearInterval(timerid);
     var days=document.getElementById("days").value;
     var hr=document.getElementById("hr").value;
@@ -65,20 +73,27 @@ function startTimer() {
 
         display.textContent = days + "days:" + hours + "hours:" + minutes + "minutes:" + seconds + "seconds";
 
-        if (--timer < 0) {
-            timer = duration;
-        }
+        if (timer <= 0) {
+            timer = 0;
+           document.getElementById("message").innerHTML="COUNTDOWN IS COMPLETED";
+          // timerid2= setInterval(function(){clearInterval(timerid);},1000);
+
+
+        }else --timer;
        
         
     }, 1000);
 }
 function stop()
 {var display=document.getElementById("time");
+document.getElementById("message").innerHTML="COUNTDOWN HAS BEEN STOPPED";
 clearInterval(timerid);
 }
 function reset()
 { var display=document.getElementById("time");
+
    clearInterval(timerid);
+   document.getElementById("message").innerHTML="COUNTDOWN TIMER HAS BEEN RESET";
   var days=document.getElementById("days").value;
     var hr=document.getElementById("hr").value;
     var min=document.getElementById("min").value;
