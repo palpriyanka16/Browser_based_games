@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<head>
+	<title>Bubble sort</title>
+	<style>
+        .input{
+        	height: 50px;
+        	width: 200px;
+        	margin-left: 30px;
+        	margin-top: 20px;
+        }
+        .value{
+        	height: 40px;
+     	    width: 40px;
+     	    border-radius: 5px;
+     	    border: 2px solid black;
+     	    display: inline-block;
+     	    margin-left: 30px;
+     	    margin-top: 50px;
+     	    color: black;
+     	    font-size: 20px;
+     	    padding-left: 10px;
+     	    padding-top: 10px;
+        }
+        .buttons{
+     	height: 40px;
+     	width: 70px;
+     	background-color: pink;
+     	margin-left: 50px;
+     	margin-top: 20px;
+     	padding-top: 10px;
+     	padding-left: 10px;
+        border-radius: 5px;
+     	font-size: 18px;
+     	cursor: pointer;
+     	display: inline-block;
+     }
+	</style>
+</head>
+<body>
+	<input id="one" class="input" name="one" type="text" placeholder="First no.">
+	<input id="two" class="input" name="two" type="text" placeholder="Second no.">
+	<input id="three" class="input" name="three" type="text" placeholder="Third no.">
+	<input id="four" class="input" name="four" type="text" placeholder="Fourth no.">
+	<input id="five" class="input" name="five" type="text" placeholder="Fifth no.">
+	<br>
+	<div id="divone" class="value"></div>
+	<div id="divtwo" class="value"></div>
+	<div id="divthree" class="value"></div>
+	<div id="divfour" class="value"></div>
+	<div id="divfive" class="value"></div>
+	<br>
+	<div id="stop" class="buttons" onclick="bubble()">Click</div>
+    <script type="text/javascript">
+    	var a=[];
+    	var b=[];
+    	var i=0,j,timer,k=1;
+    	var counter=1;
+    	b[0]=document.getElementById("divone");
+    	b[1]=document.getElementById("divtwo");
+    	b[2]=document.getElementById("divthree");
+    	b[3]=document.getElementById("divfour");
+        b[4]=document.getElementById("divfive");
+    	function bubble(){
+    	if(counter==1){
+    	counter=counter+1;
+    	i=0;
+    	k=1;
+    	a[0]=(document.getElementById("one")).value;
+    	a[1]=(document.getElementById("two")).value;
+    	a[2]=(document.getElementById("three")).value;
+    	a[3]=(document.getElementById("four")).value;
+    	a[4]=(document.getElementById("five")).value;
+    	b[0].innerHTML=a[0];
+    	b[1].innerHTML=a[1];
+    	b[2].innerHTML=a[2];
+    	b[3].innerHTML=a[3];
+        b[4].innerHTML=a[4];
+        b[0].style.backgroundColor="white";
+        b[1].style.backgroundColor="white";
+        b[2].style.backgroundColor="white";
+        b[3].style.backgroundColor="white";
+        b[4].style.backgroundColor="white";
+    	timer=setInterval(function(){
+               if(parseInt(a[i])>parseInt(a[i+1]))
+               {
+               	swap(i,i+1);
+               }
+               if(i<a.length-k)
+               	  i++;
+               	else
+               	{
+               	   k++;
+               	   b[i].style.backgroundColor="yellow";
+               	   i=0;
+               	}
+    	},1000);
+    }
+    else{
+    	clearInterval(timer);
+    	counter=1;
+    	bubble();
+    }
+    }
+    	function swap(i,j){
+    		var temp;
+    		temp=a[i];
+    		a[i]=a[j];
+    		a[j]=temp;
+            b[i].innerHTML=a[i];
+            b[j].innerHTML=a[j];
+    	}
+    </script>
+</body>
