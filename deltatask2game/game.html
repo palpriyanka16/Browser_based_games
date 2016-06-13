@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<title>My Game</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <style>
 canvas {
@@ -161,7 +162,7 @@ function updateGameArea() {
         myObstacles[i].update();
     }
     
-    myScore.text="SCORE: " + myGameArea.frameNo;
+    myScore.text="SCORE: " + Math.floor(0.1*myGameArea.frameNo);
     myScore.update();
     myGamePiece.newPos();
     myGamePiece.update();
