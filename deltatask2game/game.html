@@ -47,7 +47,7 @@ var music;
 var collidesound;
 
 function startGame() {
-    myGamePiece = new component(40, 40, "bird2.jpg", 10, 120,"image");
+    myGamePiece = new component(40, 40, "bird1.png", 10, 120,"image");
     myGamePiece.gravity = 0.05;
     myScore = new component("30px", "Consolas", "black", 280, 40, "text");
     music=new sound("backgroundmusic.mp3");
@@ -192,8 +192,8 @@ function sound(src)
         this.sound.pause();
     }    
 }
-function jumpup(n){accelerate(n);myGamePiece.speedX=1;myGamePiece.image.src="bird3.jpg";}
-function jumpdown(n){accelerate(n);myGamePiece.speedX=0;myGamePiece.image.src="bird2.jpg";}
+function jumpup(n){accelerate(n);myGamePiece.speedX=1;myGamePiece.image.src="bird2.png";}
+function jumpdown(n){accelerate(n);myGamePiece.speedX=0;myGamePiece.image.src="bird1.png";}
 function load(){location.reload();}
 </script>
 <br>
