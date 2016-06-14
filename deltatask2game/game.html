@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>My Game</title>
+ <title>My Game</title>   
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <style>
 canvas {
@@ -36,10 +36,10 @@ canvas {
 </style>
 </head>
 <body onload="startGame()">
-    <p id="gamedesc">Click on the JUMP button to start the game and keep jumping to avoid the obstacles!!good luck :)</p>
+    <p id="gamedesc">Click on the JUMP button to start the game and keep jumping to avoid the obstacles!!good luck :)Also be careful enough not to let the bird fly off the game zone</p>
 
 <script>
-var c=0;
+var c=0;var m=0;var n=0;
 var myGamePiece;
 var myObstacles = [];
 var myScore;
@@ -109,6 +109,8 @@ function component(width, height, color, x, y, type) {
         this.y += this.speedY + this.gravitySpeed;
         this.hitBottom();
         this.comedown();
+        if((this.y+this.height)<0){n++;music.stop();if(n==1)window.alert("Bird flew out of the game zone,game over sorry,try again :)");myGameArea.stop();return;}
+        if(this.x>=800){m++;music.stop();if(m==1)window.alert("Bird flew out of the game zone,game over sorry,try again :)");myGameArea.stop();return;}
     }
     this.hitBottom = function() {
         var rockbottom = myGameArea.canvas.height - 101;
@@ -117,7 +119,8 @@ function component(width, height, color, x, y, type) {
             this.gravitySpeed = 0;
         }
     }
-    this.comedown=function(){if(this.y<=0) this.gravitySpeed=0.07;}
+    this.comedown=function(){if(this.y<0)
+this.gravitySpeed=0.1;}
     this.crashWith = function(otherobj) {
         var myleft = this.x;
         var myright = this.x + (this.width);
@@ -161,7 +164,7 @@ function updateGameArea() {
         myObstacles[i].x += -1;
         myObstacles[i].update();
     }
-    
+   
     myScore.text="SCORE: " + Math.floor(0.1*myGameArea.frameNo);
     myScore.update();
     myGamePiece.newPos();
